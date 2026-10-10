@@ -1,0 +1,295 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Montserrat:wght@300;400;500;600&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+  overflow: hidden;
+}
+
+body {
+  background: #030805;
+  color: #fff7e8;
+  font-family: "Montserrat", sans-serif;
+}
+
+.phoenix-page {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  min-height: 500px;
+  overflow: hidden;
+  isolation: isolate;
+  background: #030805;
+}
+
+.phoenix-page canvas {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  touch-action: pan-y;
+}
+
+.phoenix-page::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: 
+    linear-gradient(
+      90deg,
+      rgba(3, 8, 5, 0.9) 0%,
+      rgba(3, 8, 5, 0.6) 35%,
+      rgba(3, 8, 5, 0.1) 65%,
+      transparent 100%
+    ),
+    linear-gradient(
+      0deg,
+      rgba(3, 8, 5, 0.8) 0%,
+      transparent 30%,
+      transparent 70%,
+      rgba(3, 8, 5, 0.5) 100%
+    );
+}
+
+.top-label {
+  position: absolute;
+  z-index: 3;
+  top: 35px;
+  left: 6%;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: #f1d5a0;
+}
+
+.status-dot {
+  width: 7px;
+  height: 7px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #ff9c3d;
+  box-shadow: 0 0 12px #ff7028;
+  animation: statusPulse 1.8s ease-in-out infinite;
+}
+
+.hero-content {
+  position: absolute;
+  z-index: 2;
+  top: 50%;
+  left: 6%;
+  width: min(520px, 48%);
+  transform: translateY(-48%);
+  pointer-events: none;
+}
+
+.eyebrow {
+  margin-bottom: 20px;
+  color: #e7a95b;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 6px;
+  line-height: 1.8;
+}
+
+.hero-content h1 {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  font-family: "Cinzel", serif;
+  font-size: clamp(44px, 6.8vw, 92px);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: 3px;
+  color: #fff5df;
+  text-shadow: 0 4px 35px rgba(255, 115, 32, 0.2);
+}
+
+.hero-content h1 span {
+  color: #d98c42;
+}
+
+.gold-line {
+  width: 105px;
+  height: 2px;
+  margin: 26px 0 22px;
+  background: linear-gradient(
+    90deg,
+    #ffc36c,
+    #a84a20,
+    transparent
+  );
+}
+
+.description {
+  color: rgba(255, 244, 222, 0.82);
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 2.1;
+  letter-spacing: 0.8px;
+}
+
+.bottom-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px 28px;
+  margin-top: 42px;
+  color: rgba(240, 215, 176, 0.75);
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 2px;
+}
+
+.side-text {
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  right: 26px;
+  writing-mode: vertical-rl;
+  transform: translateY(-50%);
+  color: rgba(241, 208, 159, 0.58);
+  font-size: 9px;
+  letter-spacing: 4px;
+  pointer-events: none;
+}
+
+.bottom-glow {
+  position: absolute;
+  z-index: 1;
+  right: 15%;
+  bottom: -150px;
+  width: 450px;
+  height: 280px;
+  border-radius: 50%;
+  background: rgba(255, 84, 19, 0.16);
+  filter: blur(110px);
+  pointer-events: none;
+}
+
+.model-loader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  min-width: 230px;
+  color: #f4c17d;
+}
+
+.model-loader p {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 3px;
+  white-space: nowrap;
+}
+
+.loader-ring {
+  width: 42px;
+  height: 42px;
+  border: 2px solid rgba(255, 174, 81, 0.2);
+  border-top-color: #ff9c3d;
+  border-right-color: #ff6b28;
+  border-radius: 50%;
+  animation: loaderSpin 0.8s linear infinite;
+}
+
+@keyframes loaderSpin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes statusPulse {
+  0%,
+  100% {
+    opacity: 1;
+    box-shadow: 0 0 12px #ff7028;
+  }
+  50% {
+    opacity: 0.45;
+    box-shadow: 0 0 4px #ff7028;
+  }
+}
+
+@media (max-width: 768px) {
+  .phoenix-page {
+    min-height: 480px;
+  }
+
+  .top-label {
+    top: 25px;
+    left: 6%;
+    font-size: 9px;
+    letter-spacing: 3px;
+  }
+
+  .hero-content {
+    top: auto;
+    bottom: 7%;
+    left: 6%;
+    width: 88%;
+    transform: none;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(42px, 11vw, 72px);
+  }
+
+  .eyebrow {
+    margin-bottom: 12px;
+    font-size: 9px;
+    letter-spacing: 4px;
+  }
+
+  .gold-line {
+    margin: 16px 0 12px;
+  }
+
+  .description {
+    font-size: 11px;
+    line-height: 1.8;
+  }
+
+  .bottom-info {
+    margin-top: 18px;
+    font-size: 8px;
+    letter-spacing: 1.5px;
+  }
+
+  .side-text {
+    right: 12px;
+    font-size: 7px;
+    letter-spacing: 2px;
+  }
+
+  .bottom-glow {
+    right: -50px;
+    bottom: -100px;
+    width: 300px;
+    height: 200px;
+  }
+
+  .phoenix-page::after {
+    background: linear-gradient(
+      0deg,
+      rgba(3, 8, 5, 0.95) 0%,
+      rgba(3, 8, 5, 0.5) 50%,
+      rgba(3, 8, 5, 0.2) 100%
+    );
+  }
+}
